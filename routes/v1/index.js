@@ -1,8 +1,12 @@
 const express = require("express");
-const bootcampsRouter = require("./bootcamps");
+const getBootcampRoutes = require("./bootcamps");
 
-const router = express.Router();
+function getV1Routes() {
+  const router = express.Router();
 
-router.use("/bootcamps", bootcampsRouter);
+  router.use("/bootcamps", getBootcampRoutes());
 
-module.exports = router;
+  return router;
+}
+
+module.exports = getV1Routes;
