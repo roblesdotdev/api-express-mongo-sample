@@ -2,12 +2,15 @@ const express = require("express");
 const http = require("http");
 const morgan = require("morgan");
 const { PORT } = require("./config");
+const router_v1 = require("./routes/v1");
 
 const app = express();
 
 app.use(morgan("tiny"));
 
 app.get("/", (_req, res) => res.send("Working"));
+
+app.use("/api/v1", router_v1);
 
 const server = http.createServer(app);
 
